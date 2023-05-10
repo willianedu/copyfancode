@@ -1,13 +1,24 @@
 package com.copyfan.apicopyfan.model;
 
+import lombok.Data;
+
+import javax.persistence.*;
+
+@Data
+@Entity
 public class Usuario {
-	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+
+	private Boolean ativo;
+	@OneToOne
+
 	private String senha;
 	private String nome;
 	private String email;
 	private String matricula;
-	
-	
+
 	public Usuario() {
 	}
 	public Usuario(String senha, String nome, String email, String matricula) {
@@ -40,12 +51,19 @@ public class Usuario {
 	public void setMatricula(String matricula) {
 		this.matricula = matricula;
 	}
-	
-	public void cadastro(String email, String senha,String matricula, String nome) {
-		
+	public Boolean getAtivo() {
+		return ativo;
 	}
-	
-    public void logar(String email, String senha) {
-		
+	public void setAtivo(Boolean aitvo) {this.ativo=ativo;}
+	public Long getId(){return id;}
+	public void setId(Long id) {this.id=id;}
+
+	public void cadastro(String email, String senha,String matricula, String nome) {
+
+	}
+
+
+	public void logar(String email, String senha) {
+
 	}
 }

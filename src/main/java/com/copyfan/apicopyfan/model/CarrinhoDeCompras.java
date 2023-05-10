@@ -1,10 +1,12 @@
 package com.copyfan.apicopyfan.model;
 
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import lombok.Data;
+
+import javax.persistence.*;
+
+@Data
+@Entity
 
 public class CarrinhoDeCompras {
 	@Id
@@ -12,7 +14,6 @@ public class CarrinhoDeCompras {
 	private Long id;
 
 	private Boolean ativo;
-	@OneToOne
 	private String produto;
 	private Integer quantidade;
 	private Double vlrTotal;

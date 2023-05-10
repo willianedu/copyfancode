@@ -17,7 +17,7 @@ public class PedidoController {
     PedidoService pedidoService;
 
     @PostMapping
-    public ResponseEntity<Pedido> salvarEstado(@RequestBody Pedido pedido) {
+    public ResponseEntity<Pedido> salvarPedido(@RequestBody Pedido pedido) {
         Pedido response = pedidoService.salvar(pedido);
         return ResponseEntity.ok(response);
     }

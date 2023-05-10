@@ -1,8 +1,7 @@
 package com.copyfan.apicopyfan.controller;
 
-import com.copyfan.apicopyfan.model.Pedido;
-import com.copyfan.apicopyfan.model.Produto;
-import com.copyfan.apicopyfan.service.ProdutoService;
+import com.copyfan.apicopyfan.model.Cliente;
+import com.copyfan.apicopyfan.service.ClienteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -11,26 +10,25 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/produto")
-public class ProdutoController {
-
+@RequestMapping("/cliente")
+public class ClienteController {
     @Autowired
-    ProdutoService produtoService;
+    ClienteService clienteService;
+
     @PostMapping
-    public ResponseEntity<Produto> salvarProduto(@RequestBody Produto produto) {
-        Produto response = produtoService.salvar(produto);
+    public ResponseEntity<Cliente> salvarCliente(@RequestBody Cliente cliente) {
+        Cliente response = clienteService.salvar(cliente);
         return ResponseEntity.ok(response);
     }
 
     @GetMapping(path = "/all", produces = "application/json")
-    public ResponseEntity<List<Produto>> buscarTodos() {
-        List<Produto> response = produtoService.buscarTodos();
+    public ResponseEntity<List<Cliente>> buscarTodos() {
+        List<Cliente> response = clienteService.buscarTodos();
         return ResponseEntity.ok(response);
-
     }
     @GetMapping(path = "/{id}")
-    public ResponseEntity<Produto> buscarPorId(@PathVariable Long id) {
-        Optional<Produto> response = produtoService.buscarPorId(id);
+    public ResponseEntity<Cliente> buscarPorId(@PathVariable Long id) {
+        Optional<Cliente> response = clienteService.buscarPorId(id);
         if(response.isPresent()) {
             return ResponseEntity.ok(response.get());
         }
@@ -38,18 +36,18 @@ public class ProdutoController {
 
     }
     @PutMapping()
-    public ResponseEntity<Produto> update(@RequestBody Produto produto) {
-        if(!produtoService.buscarPorId(produto.getId()).isPresent()) {
+    public ResponseEntity<Cliente> update(@RequestBody Cliente cliente) {
+        if(!clienteService.buscarPorId(cliente.getId()).isPresent()) {
             return ResponseEntity.notFound().build();
         }
-        return ResponseEntity.ok(produtoService.atualizar(produto));
+        return ResponseEntity.ok(clienteService.atualizar(cliente));
     }
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable Long id) {
-        if (!produtoService.buscarPorId(id).isPresent()) {
+        if (!clienteService.buscarPorId(id).isPresent()) {
             return ResponseEntity.notFound().build();
         }
-        produtoService.deleteById(id);
+        clienteService.deleteById(id);
         return ResponseEntity.noContent().build();
     }
 }

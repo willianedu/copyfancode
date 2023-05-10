@@ -1,9 +1,11 @@
 package com.copyfan.apicopyfan.model;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import lombok.Data;
+
+import javax.persistence.*;
+
+@Data
+@Entity
 
 public class Aluno {
 	@Id
@@ -11,8 +13,6 @@ public class Aluno {
 	private Long id;
 
 	private Boolean ativo;
-	@OneToOne
-	
 	private String matricula;
 	private String cpf;
 	private String curso;

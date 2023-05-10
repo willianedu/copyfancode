@@ -12,8 +12,6 @@ public class Usuario {
 	private Long id;
 
 	private Boolean ativo;
-	@OneToOne
-
 	private String senha;
 	private String nome;
 	private String email;

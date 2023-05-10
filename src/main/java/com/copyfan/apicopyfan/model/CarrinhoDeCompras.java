@@ -1,8 +1,18 @@
 package com.copyfan.apicopyfan.model;
 
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+
 public class CarrinhoDeCompras {
-	private Integer id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+
+	private Boolean ativo;
+	@OneToOne
 	private String produto;
 	private Integer quantidade;
 	private Double vlrTotal;
@@ -10,16 +20,16 @@ public class CarrinhoDeCompras {
 	
 	public CarrinhoDeCompras() {
 	}
-	public CarrinhoDeCompras(Integer id, String produto, Integer quantidade, Double vlrTotal) {
+	public CarrinhoDeCompras(Long id, String produto, Integer quantidade, Double vlrTotal) {
 		this.id = id;
 		this.produto = produto;
 		this.quantidade = quantidade;
 		this.vlrTotal = vlrTotal;
 	}
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	public String getProduto() {
@@ -37,9 +47,11 @@ public class CarrinhoDeCompras {
 	public Double getVlrTotal() {
 		return vlrTotal;
 	}
-	public void setVlrTotal(Double vlrTotal) {
-		this.vlrTotal = vlrTotal;
+	public void setVlrTotal(Double vlrTotal) {this.vlrTotal = vlrTotal;}
+	public Boolean getAtivo() {
+		return ativo;
 	}
+	public void setAtivo(Boolean aitvo) {this.ativo=ativo;}
 	
 	public void inserirProduto() {
 		

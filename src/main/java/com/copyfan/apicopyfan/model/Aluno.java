@@ -1,5 +1,17 @@
 package com.copyfan.apicopyfan.model;
+
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+
 public class Aluno {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+
+	private Boolean ativo;
+	@OneToOne
 	
 	private String matricula;
 	private String cpf;
@@ -38,6 +50,12 @@ public class Aluno {
 	public void setArquivo(Byte arquivo) {
 		this.arquivo = arquivo;
 	}
+	public Boolean getAtivo() {
+		return ativo;
+	}
+	public void setAtivo(Boolean aitvo) {this.ativo=ativo;}
+	public Long getId(){return id;}
+	public void setId(Long id) {this.id=id;}
 	public void pedirArquivo() {
 		
 	}

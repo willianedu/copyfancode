@@ -45,7 +45,7 @@ public class PedidoController {
         return ResponseEntity.ok(pedidoService.atualizar(pedido));
     }
     @GetMapping(path = "/numero/{numeroPedido}")
-    public ResponseEntity<Pedido> buscarPorNomes(@PathVariable Long id) {
+    public ResponseEntity<Pedido> buscarPorNumeroPedido(@PathVariable Long id) {
         Pedido response = pedidoService.buscarPorIdAndAtivo(id);
         return ResponseEntity.ok(response);
     }
